@@ -1,27 +1,21 @@
-import { Box, Paper } from '@mui/material';
 import React from 'react';
+import Typography from '@mui/material/Typography';
+
+import { Container, Form } from './components';
+import { formObj } from './constants';
 
 export const App = () => {
+  const { form } = formObj;
+
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        p: 4,
-        height: '100vh',
-        background: '#f4eeee',
-      }}
-    >
-      <Paper
-        sx={{
-          minWidth: '800px',
-          minHeight: '300px',
-          p: 4,
-        }}
-      >
-        App
-      </Paper>
-    </Box>
+    <Container>
+      <Typography variant="h5" fontWeight={600}>
+        {form.title}
+      </Typography>
+
+      <Typography variant="body1">{form.description}</Typography>
+
+      <Form form={form} />
+    </Container>
   );
 };
