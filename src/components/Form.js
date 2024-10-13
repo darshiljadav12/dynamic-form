@@ -69,7 +69,7 @@ export const Form = ({ form }) => {
           variant="contained"
           color="primary"
         >
-          Save
+          Submit
         </Button>
         <Button variant="outlined" color="primary" onClick={handleReset}>
           Reset

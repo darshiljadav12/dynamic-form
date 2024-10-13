@@ -2,13 +2,13 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
+import FormLabel from '@mui/material/FormLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import React from 'react';
 import Slider from '@mui/material/Slider';
 import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
 
 import { useFormValidations } from '../hooks';
 
@@ -91,7 +91,7 @@ export const RenderField = ({
           select
           label={label}
           name={name}
-          value={value}
+          value={value || ''}
           onChange={handleChange}
           required={required}
         >
@@ -112,9 +112,9 @@ export const RenderField = ({
   if (type === 'radio') {
     return (
       <FormControl fullWidth margin="normal" error={!!formErrors[name]}>
-        <Typography>
+        <FormLabel>
           {label} {required ? '*' : ''}
-        </Typography>
+        </FormLabel>
         <RadioGroup name={name} value={value} onChange={handleChange}>
           {options.map((option, idx) => (
             <FormControlLabel
@@ -133,7 +133,7 @@ export const RenderField = ({
   if (type === 'checkbox') {
     return (
       <FormControl fullWidth margin="normal" error={!!formErrors[name]}>
-        <Typography>{label}</Typography>
+        <FormLabel>{label}</FormLabel>
         {options.map((option, idx) => (
           <FormControlLabel
             key={idx}
@@ -155,7 +155,7 @@ export const RenderField = ({
   if (type === 'slider') {
     return (
       <FormControl fullWidth margin="normal" error={!!formErrors[name]}>
-        <Typography>{label}</Typography>
+        <FormLabel>{label}</FormLabel>
         <Slider
           name={name}
           value={parseFloat(value) || min}
